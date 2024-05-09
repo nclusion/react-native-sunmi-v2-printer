@@ -125,6 +125,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildFeatures {
         aidl true
+        buildFeatures.buildConfig true
     }
 
     compileOptions {
@@ -138,6 +139,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        //buildConfigField('String' , 'myParameter', 'someValue')
     }
     splits {
         abi {
@@ -158,6 +161,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro", "devsupport.pro"
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -191,7 +195,9 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"
 
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.android.support:multidex:1.0.3'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

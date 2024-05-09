@@ -1,5 +1,7 @@
 package com.sunmi.v2.printer;
 
+import static androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED;
+
 import android.content.BroadcastReceiver;
 
 import com.facebook.react.bridge.Callback;
@@ -10,6 +12,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.Promise;
+
+import android.os.Build;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -38,6 +42,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import android.content.IntentFilter;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -102,7 +108,13 @@ public class SunmiV2PrinterModule extends ReactContextBaseJavaModule {
         mFilter.addAction(KNIFE_ERROR_2_ACTION);
         mFilter.addAction(OVER_HEATING_ACITON);
         mFilter.addAction(FIRMWARE_UPDATING_ACITON);
-        getReactApplicationContext().registerReceiver(receiver, mFilter);
+
+            ContextCompat.registerReceiver(
+                    getReactApplicationContext(),
+                    receiver,
+                    mFilter,
+                    RECEIVER_NOT_EXPORTED
+            );
         Log.d("PrinterReceiver", "------------ init ");
     }
 

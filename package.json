@@ -1,6 +1,6 @@
 {
   "name": "react-native-sunmi-v2-printer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Sunmi V2 Printer for React-Native",
   "author": "Suraneti Rodsuwan <suraneti.rod@gmail.com>",
   "contributors": [],
@@ -24,7 +24,7 @@
   "license": "MIT",
   "peerDependencies": {
     "react": ">=18",
-    "react-native": ">=0.63.3"
+    "react-native": ">=0.62.3"
   },
   "homepage": "https://github.com/suraneti/react-native-sunmi-v2-printer#readme",
   "directories": {
